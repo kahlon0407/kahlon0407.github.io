@@ -1,7 +1,7 @@
 function showTime() {
     var time = new Date();
     var year = time.getFullYear();
-    var month = time.getMonth() + 1;
+    var month = (time.getMonth() + 1 + '').padStart(2, '0');
     var day = (time.getDate() + '').padStart(2, '0');
     var hour = (time.getHours() + '').padStart(2, '0');
     var minutes = (time.getMinutes() + '').padStart(2, '0');
@@ -56,6 +56,15 @@ function center1(data) {
 function center2(data) {
     var myChart = echarts.init(document.getElementById('center2'), 'diy');
     var option = {
+        title: {
+            text: '\n中国疫情分布地区',
+            left: 'center',
+            textStyle: {
+                fontSize: 24,
+                color: "red",
+            },
+        },
+
         tooltip: {
             trigger: 'item'
         },
@@ -81,14 +90,14 @@ function center2(data) {
 
             itemStyle: {
                 normal: {
-                    borderWidth: .3,
-                    borderColor: '#009fe8',
+                    borderWidth: .5,
+                    borderColor: '#0000ff',
                     areaColor: '#ffefd5',
                 },
                 emphasis: {
                     borderWidth: .5,
                     borderColor: '#4b0082',
-                    areaColor: '#fff',
+                    areaColor: 'pink',
                 }
             },
             label: {
@@ -96,7 +105,7 @@ function center2(data) {
                     show: true,
                     fontSize: 10,
                     textStyle: {
-                        color: 'pink',
+                        color: 'darkslategrey',
                     }
 
                 },
@@ -123,6 +132,7 @@ function right1(data) {
         title: {
             text: "全国确诊省市TOP10",
             textStyle: {
+                fontSize: 18,
                 color: 'white',
             },
             left: 'left'
@@ -180,6 +190,14 @@ function right1(data) {
 function right2(data) {
     var myChart = echarts.init(document.getElementById('right2'), 'diy');
     var option = {
+        title: {
+            text: '境外输入确诊省市TOP5',
+            left: 'center',
+            textStyle: {
+                fontSize: 18,
+                color: "white",
+            },
+        },
         tooltip: {
             trigger: 'item',
             formatter: '{a} <br/>{b} : {c} ({d}%)'
@@ -198,9 +216,9 @@ function right2(data) {
                 data: [],
                 emphasis: {
                     itemStyle: {
-                        shadowBlur: 10,
+                        shadowBlur: 20,
                         shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        shadowColor: 'blue',
                     }
                 }
             }
@@ -235,6 +253,7 @@ function left1(data) {
         title: {
             text: "全国累计趋势",
             textStyle: {
+                fontSize: 18,
                 color: 'white',
             },
             left: 'left',
@@ -320,6 +339,7 @@ function left2(data) {
         title: {
             text: "全国新增趋势",
             textStyle: {
+                fontSize: 18,
                 color: 'white',
             },
             left: 'left',
